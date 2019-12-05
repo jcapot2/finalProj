@@ -11,7 +11,14 @@
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
         android:layout_width="match_parent"
-        android:layout_height="260dip" />
+        android:layout_height="260dip"
+        android:layout_marginTop="40dip" />
+
+    <Button
+        android:id="@+id/backButtonGame"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="Back" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,4 +95,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </RelativeLayout>

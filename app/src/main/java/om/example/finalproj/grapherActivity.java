@@ -2,6 +2,7 @@ package om.example.finalproj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,9 +27,11 @@ public class grapherActivity extends AppCompatActivity {
         graph.getViewport().setYAxisBoundsManual(true);
         Button run = findViewById(R.id.addButton);
         Button clear = findViewById(R.id.clear);
+        Button back = findViewById(R.id.backButtonGame);
         graph.setVisibility(View.VISIBLE);
         run.setOnClickListener(unused -> throwClicked());
         clear.setOnClickListener(unused -> clearClicked());
+        back.setOnClickListener((unused -> backClicked()));
     }
 
     private void throwClicked() {
@@ -71,5 +74,10 @@ public class grapherActivity extends AppCompatActivity {
         xMax = 0;
         graph.getViewport().setMaxX(xMax + 1);
         graph.getViewport().setMaxY(yMax + 1);
+    }
+    private void backClicked() {
+        clearClicked();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
