@@ -2,10 +2,15 @@ package om.example.finalproj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -20,8 +25,10 @@ public class grapherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grapher);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         graph = findViewById(R.id.graph);
+        Button backButt = findViewById(R.id.back);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setYAxisBoundsManual(true);
         Button run = findViewById(R.id.addButton);
@@ -29,18 +36,23 @@ public class grapherActivity extends AppCompatActivity {
         graph.setVisibility(View.VISIBLE);
         run.setOnClickListener(unused -> throwClicked());
         clear.setOnClickListener(unused -> clearClicked());
+        backButt.setOnClickListener(unused -> backClicked());
     }
 
     private void throwClicked() {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.termScroll);
         EditText vx_input = findViewById(R.id.velX);
         EditText vy_input = findViewById(R.id.velY);
-        String vxString, vyString;
+        EditText g_input = findViewById(R.id.gravity);
+        String vxString, vyString, gString;
         vxString = vx_input.getText().toString();
         vyString = vy_input.getText().toString();
-        if (vxString.equals("") == false && vyString.equals("") == false) {
-            int vxInt, vyInt;
+        gString = g_input.getText().toString();
+        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gString.equals("") == false)) {
+            int vxInt, vyInt, ymax, xmax, g;
             vxInt = Integer.valueOf(vxString);
             vyInt = Integer.valueOf(vyString);
+            g = Integer.valueOf(gString);
             double x, y, t, dt;
             x = 0.0;
             y = 0.0;
@@ -48,7 +60,7 @@ public class grapherActivity extends AppCompatActivity {
             dt = .01;
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
             while (y >= 0) {
-                y = vyInt * t - .5 * 9.8 * t * t;
+                y = vyInt * t - .5 * g * t * t;
                 x = vxInt * t;
                 t += dt;
                 if (y > yMax) {
@@ -63,6 +75,18 @@ public class grapherActivity extends AppCompatActivity {
             graph.getViewport().setMaxX(xMax + 1);
             graph.getViewport().setMaxY(yMax + 1);
             graph.addSeries(series);
+            //Populate terminalView
+            ymax = (vyInt*vyInt)/(2*g);
+            TextView tv = new TextView(this);
+            tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            tv.setText("Maximum Height: " + ymax);
+            layout.addView(tv, 0);
+        } else {
+            //Populate terminalView
+            TextView tv = new TextView(this);
+            tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            tv.setText("Input Invalid");
+            layout.addView(tv, 0);
         }
     }
     private void clearClicked() {
@@ -71,5 +95,16 @@ public class grapherActivity extends AppCompatActivity {
         xMax = 0;
         graph.getViewport().setMaxX(xMax + 1);
         graph.getViewport().setMaxY(yMax + 1);
+        //Populate terminalView
+        LinearLayout layout = (LinearLayout) findViewById(R.id.termScroll);
+        layout.removeAllViews();
+        TextView tv = new TextView(this);
+        tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        tv.setText("Cleared Data");
+        layout.addView(tv, 0);
+    }
+    private void backClicked() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
