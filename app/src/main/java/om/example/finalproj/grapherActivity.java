@@ -34,6 +34,12 @@ public class grapherActivity extends AppCompatActivity {
         Button run = findViewById(R.id.addButton);
         Button clear = findViewById(R.id.clear);
         graph.setVisibility(View.VISIBLE);
+        EditText x = findViewById(R.id.velX);
+        EditText y = findViewById(R.id.velY);
+        EditText g = findViewById(R.id.gravity);
+        x.setText("1");
+        y.setText("1");
+        g.setText("10");
         run.setOnClickListener(unused -> throwClicked());
         clear.setOnClickListener(unused -> clearClicked());
         backButt.setOnClickListener(unused -> backClicked());
@@ -48,8 +54,9 @@ public class grapherActivity extends AppCompatActivity {
         vxString = vx_input.getText().toString();
         vyString = vy_input.getText().toString();
         gString = g_input.getText().toString();
-        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gString.equals("") == false)) {
-            int vxInt, vyInt, ymax, xmax, g;
+        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gString.equals(""))) {
+            int vxInt, vyInt, g;
+            double ymaxExact, xmax;
             vxInt = Integer.valueOf(vxString);
             vyInt = Integer.valueOf(vyString);
             g = Integer.valueOf(gString);
@@ -76,10 +83,11 @@ public class grapherActivity extends AppCompatActivity {
             graph.getViewport().setMaxY(yMax + 1);
             graph.addSeries(series);
             //Populate terminalView
-            ymax = (vyInt*vyInt)/(2*g);
+            ymaxExact = (Double.valueOf(vyInt*vyInt))/(2*g);
+            System.out.println(ymaxExact);
             TextView tv = new TextView(this);
             tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            tv.setText("Maximum Height: " + ymax);
+            tv.setText("Maximum Height: " + ymaxExact);
             layout.addView(tv, 0);
         } else {
             //Populate terminalView
