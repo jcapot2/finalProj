@@ -80,7 +80,7 @@ public class grapherActivity extends AppCompatActivity {
         gravString = g_input.getText().toString();
         String output;
         //Run calculations if all input data exists
-        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gravString.equals(""))) {
+        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gravString.equals("")) && !(gravString.equals("0"))) {
             int vxInt, vyInt, g;
             double ymaxExact, xmaxExact, timeFlight;
             vxInt = Integer.valueOf(vxString);

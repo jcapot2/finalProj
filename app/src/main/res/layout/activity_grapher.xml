@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="X Velocity"
+                    android:text="X Velocity (m/s)"
                     android:textSize="18sp" />
 
                 <TextView
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Y Velocity"
+                    android:text="Y Velocity (m/s)"
                     android:textSize="18sp" />
 
                 <TextView
@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Gravity"
+                    android:text="Gravity (m/s^2)"
                     android:textSize="18sp" />
 
             </LinearLayout>
