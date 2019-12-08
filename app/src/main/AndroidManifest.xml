@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".grapherActivity"></activity>
+        <activity android:name=".quizMenuActivity"></activity>
+        <activity android:name=".quizActivity" />
+        <activity android:name=".glossaryActivity" />
+        <activity android:name=".grapherActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

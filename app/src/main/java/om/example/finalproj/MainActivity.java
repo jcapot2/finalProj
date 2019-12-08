@@ -20,9 +20,23 @@ public class MainActivity extends AppCompatActivity {
 
         Button start = findViewById(R.id.graphButton);
         start.setOnClickListener(unused -> startClicked());
+
+        Button learn = findViewById(R.id.glossaryButton);
+        learn.setOnClickListener(unused -> learnClicked());
+
+        Button quizBut = findViewById(R.id.quizBut);
+        quizBut.setOnClickListener(unused -> quizButClicked());
     }
     private void startClicked() {
         startActivity(new Intent(this, grapherActivity.class));
+        finish();
+    }
+    private void learnClicked() {
+        startActivity(new Intent(this, glossaryActivity.class));
+        finish();
+    }
+    private void quizButClicked() {
+        startActivity(new Intent(this, quizMenuActivity.class));
         finish();
     }
 }
