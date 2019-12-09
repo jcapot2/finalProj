@@ -32,9 +32,11 @@ public class grapherActivity extends AppCompatActivity {
     //Setting up rounding standard for large doubles
     private static DecimalFormat df = new DecimalFormat("0.000");
     //text colors in scroll view
-    private String throwColor = "#d09403";
+    private String throwColor = "#ff7700";
     private String errorColor = "#FD0204";
     private String clearColor = "#3eafdb";
+    //text size
+    private int tSize = 14;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,7 @@ public class grapherActivity extends AppCompatActivity {
                      "Flight Time:                 " + df.format(timeFlight) + " (s)\n";
             tv.setText(output);
             tv.setTextColor(Color.parseColor(throwColor));
+            tv.setTextSize(tSize);
             layout.addView(tv, 0);
         } else {
             //Populate terminalView
@@ -129,6 +132,7 @@ public class grapherActivity extends AppCompatActivity {
             tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             tv.setText("Invalid Input\n");
             tv.setTextColor(Color.parseColor(errorColor));
+            tv.setTextSize(tSize);
             layout.addView(tv, 0);
         }
     }
@@ -151,6 +155,7 @@ public class grapherActivity extends AppCompatActivity {
         tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tv.setText("Cleared Data");
         tv.setTextColor(Color.parseColor(clearColor));
+        tv.setTextSize(tSize);
         layout.addView(tv, 0);
     }
 
