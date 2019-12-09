@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     private void learnClicked() {
-        startActivity(new Intent(this, glossaryActivity.class));
+        startActivity(new Intent(this, learnActivity.class));
         finish();
     }
     private void quizButClicked() {

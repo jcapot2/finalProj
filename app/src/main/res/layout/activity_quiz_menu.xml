@@ -36,7 +36,7 @@
         android:layout_height="120dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="348dp"
-        android:text="Question One"
+        android:text="Question Three"
         android:layout_alignTop="@id/qThreeBut"/>
 
     <TextView
@@ -44,18 +44,18 @@
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="517dp"
+        android:layout_marginTop="492dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="Your Score:"
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/scoreNum"
         android:layout_width="match_parent"
         android:layout_height="78dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="583dp"
+        android:layout_marginTop="551dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="0 / 3"

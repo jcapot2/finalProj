@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class quizMenuActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,11 +19,14 @@ public class quizMenuActivity extends AppCompatActivity {
         Button qOneBut = findViewById(R.id.qOneBut);
         qOneBut.setOnClickListener(unused -> qOneButClicked());
 
-//        Button qTwoBut = findViewById(R.id.qTwoBut);
-//        qOneBut.setOnClickListener(unused -> qTwoButClicked());
-//
-//        Button qThreeBut = findViewById(R.id.qThreeBut);
-//        qOneBut.setOnClickListener(unused -> qThreeButClicked());
+        Button qTwoBut = findViewById(R.id.qTwoBut);
+        qTwoBut.setOnClickListener(unused -> qTwoButClicked());
+
+        Button qThreeBut = findViewById(R.id.qThreeBut);
+        qThreeBut.setOnClickListener(unused -> qThreeButClicked());
+
+        TextView scoreNum = findViewById(R.id.scoreNum);
+        scoreNum.setText(String.valueOf(GlobalClass.getCountCorrect()) + " / 3");
     }
     private void quizMenuBackButClicked() {
         startActivity(new Intent(this, MainActivity.class));
@@ -33,12 +36,12 @@ public class quizMenuActivity extends AppCompatActivity {
         startActivity(new Intent(this, quizActivity.class));
         finish();
     }
-//    private void qTwoButClicked() {
-//        startActivity(new Intent(this, quizActivity2.class));
-//        finish();
-//    }
-//    private void qThreeButClicked() {
-//        startActivity(new Intent(this, quizActivity3.class));
-//        finish();
-//    }
+    private void qTwoButClicked() {
+        startActivity(new Intent(this, quizActivity2.class));
+        finish();
+    }
+    private void qThreeButClicked() {
+        startActivity(new Intent(this, QuizActivity3.class));
+        finish();
+    }
 }
