@@ -30,16 +30,22 @@ public class QuizActivity3 extends AppCompatActivity {
         CheckBox a3 = (CheckBox) findViewById(R.id.a3);
         CheckBox a4 = (CheckBox) findViewById(R.id.a4);
         TextView theResult = (TextView) findViewById(R.id.theResult);
-        if (!a1.isChecked() && !a2.isChecked() && !a3.isChecked() && a4.isChecked()) {
-            theResult.setText("Correct!");
-            theResult.setTextColor(Color.GREEN);
-            GlobalClass.setCountCorrect(GlobalClass.getCountCorrect() + 1);
-            if (GlobalClass.getCountCorrect() > 3) {
-                GlobalClass.setCountCorrect(3);
+        if (GlobalClass.getgotCorrectAns1() == false) {
+            if (!a1.isChecked() && !a2.isChecked() && !a3.isChecked() && a4.isChecked()) {
+                theResult.setText("Correct!");
+                theResult.setTextColor(Color.GREEN);
+                GlobalClass.setCountCorrect(GlobalClass.getCountCorrect() + 1);
+                if (GlobalClass.getCountCorrect() > 3) {
+                    GlobalClass.setCountCorrect(3);
+                }
+                GlobalClass.setGotCorrectAns1(true);
+            } else {
+                theResult.setText("Sorry, this is incorrect");
+                theResult.setTextColor(Color.RED);
             }
         } else {
-            theResult.setText("Sorry, this is incorrect");
-            theResult.setTextColor(Color.RED);
+            theResult.setText("You already got the right answer. Stop flexing");
+            theResult.setTextColor(Color.GREEN);
         }
     }
 }

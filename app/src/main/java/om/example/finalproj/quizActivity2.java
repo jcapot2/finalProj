@@ -29,25 +29,31 @@ public class quizActivity2 extends AppCompatActivity {
         RadioGroup choices = (RadioGroup) findViewById(R.id.choices);
         int option = choices.getCheckedRadioButtonId();
         TextView result = (TextView) findViewById(R.id.result);
-        switch (option) {
-            case R.id.answer1:
-                result.setText("Sorry, that is incorrect");
-                result.setTextColor(Color.RED);
-                break;
-            case R.id.answer2:
-                result.setText("Sorry, that is incorrect");
-                result.setTextColor(Color.RED);
-                break;
-            case R.id.answer3:
-                result.setText("Correct!");
-                result.setTextColor(Color.GREEN);
-                GlobalClass.setCountCorrect(GlobalClass.getCountCorrect() + 1);
-                if (GlobalClass.getCountCorrect() > 3) {
-                    GlobalClass.setCountCorrect(3);
-                }
-                break;
-            default:
-                result.setText("");
+        if (GlobalClass.getgotCorrectAns2() == false) {
+            switch (option) {
+                case R.id.answer1:
+                    result.setText("Sorry, that is incorrect");
+                    result.setTextColor(Color.RED);
+                    break;
+                case R.id.answer2:
+                    result.setText("Sorry, that is incorrect");
+                    result.setTextColor(Color.RED);
+                    break;
+                case R.id.answer3:
+                    result.setText("Correct!");
+                    result.setTextColor(Color.GREEN);
+                    GlobalClass.setCountCorrect(GlobalClass.getCountCorrect() + 1);
+                    if (GlobalClass.getCountCorrect() > 3) {
+                        GlobalClass.setCountCorrect(3);
+                    }
+                    GlobalClass.setGotCorrectAns2(true);
+                    break;
+                default:
+                    result.setText("");
+            }
+        } else {
+            result.setText("You already got the right answer. Stop flexing");
+            result.setTextColor(Color.GREEN);
         }
     }
 }

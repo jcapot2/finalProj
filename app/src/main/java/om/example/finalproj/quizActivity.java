@@ -38,20 +38,26 @@ public class quizActivity extends AppCompatActivity {
         EditText firstAnswer = findViewById(R.id.firstAnswer);
         String firAns = firstAnswer.getText().toString();
         String rightAnswer = "4.8";
-        if (!isNumeric(firAns)) {
-            rightOrWrong.setText("Sorry, your answer could not be understood");
-            rightOrWrong.setTextColor(Color.YELLOW);
-        }
-        if (!firAns.equals(rightAnswer)) {
-            rightOrWrong.setText("Wrong answer");
-            rightOrWrong.setTextColor(Color.RED);
-        } else {
-            rightOrWrong.setText("Correct!");
-            rightOrWrong.setTextColor(Color.GREEN);
-            GlobalClass.setCountCorrect(GlobalClass.getCountCorrect() + 1);
-            if (GlobalClass.getCountCorrect() > 3) {
-                GlobalClass.setCountCorrect(3);
+        if (GlobalClass.getgotCorrectAns3() == false) {
+            if (!isNumeric(firAns)) {
+                rightOrWrong.setText("Sorry, your answer could not be understood");
+                rightOrWrong.setTextColor(Color.YELLOW);
             }
+            if (!firAns.equals(rightAnswer)) {
+                rightOrWrong.setText("Wrong answer");
+                rightOrWrong.setTextColor(Color.RED);
+            } else {
+                rightOrWrong.setText("Correct!");
+                rightOrWrong.setTextColor(Color.GREEN);
+                GlobalClass.setCountCorrect(GlobalClass.getCountCorrect() + 1);
+                if (GlobalClass.getCountCorrect() > 3) {
+                    GlobalClass.setCountCorrect(3);
+                }
+                GlobalClass.setGotCorrectAns3(true);
+            }
+        } else {
+            rightOrWrong.setText("You already got the right answer. Stop flexing");
+            rightOrWrong.setTextColor(Color.GREEN);
         }
     }
     public static boolean isNumeric(String str) {
