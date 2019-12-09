@@ -20,10 +20,10 @@
         <TextView
             android:id="@+id/question3"
             android:layout_width="match_parent"
-            android:layout_height="173dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="A canon shoots a ball at a 45 degree angle above the horizon. Check all the speeds below where the canon ball will NOT pass over the 30 meter tall wall standing 50 meters away."
-            android:textSize="24sp" />
+            android:text="A canon shoots a ball at a 45 degree angle above the horizon. Check all the speeds below where the canon ball will NOT pass over the 30 meter tall wall standing 50 meters away. (ignore air resistance, gravitational acceleration = 9.8 m/s^2)"
+            android:textSize="21dp" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -35,25 +35,25 @@
             android:id="@+id/a1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="20 m/s" />
 
         <CheckBox
             android:id="@+id/a2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="27 m/s" />
 
         <CheckBox
             android:id="@+id/a3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="30 m/s" />
 
         <CheckBox
             android:id="@+id/a4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="37 m/s" />
 
         <Button
             android:id="@+id/submBut"
