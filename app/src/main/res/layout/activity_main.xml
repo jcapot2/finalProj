@@ -32,6 +32,12 @@ tools:context = ".MainActivity">
             android:layout_height="150dp"
             android:text="Learn" />
 
+        <Button
+            android:id="@+id/quizBut"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Quiz" />
+
     </LinearLayout>
 
 </RelativeLayout>

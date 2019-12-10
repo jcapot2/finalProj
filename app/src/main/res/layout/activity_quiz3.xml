@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizActivity3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/backButQ3"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="A canon shoots a ball at a 45 degree angle above the horizon. Check all the speeds below where the canon ball will NOT pass over the 30 meter tall wall standing 50 meters away. (ignore air resistance, gravitational acceleration = 9.8 m/s^2)"
+            android:textSize="21dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            app:srcCompat="@drawable/kinematics2" />
+
+        <CheckBox
+            android:id="@+id/a1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="20 m/s" />
+
+        <CheckBox
+            android:id="@+id/a2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="27 m/s" />
+
+        <CheckBox
+            android:id="@+id/a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="30 m/s" />
+
+        <CheckBox
+            android:id="@+id/a4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="37 m/s" />
+
+        <Button
+            android:id="@+id/submBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="165dp"
+            android:gravity="center"
+            android:text="Submit"
+            android:onClick="submitIt"/>
+
+        <TextView
+            android:id="@+id/theResult"
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:gravity="center"
+            android:textSize="24sp" />
+    </LinearLayout>
+</RelativeLayout>

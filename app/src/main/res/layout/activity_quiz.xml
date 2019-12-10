@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quizActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/quizBackBut"
+            android:layout_width="106dp"
+            android:layout_height="38dp"
+            android:text="Back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="Say you kick a ball off a 100 m tall building with speed 5 m/s and a 30 degree angle above the horizon. How long will it take for the ball to hit the lake? (Ignore air resistance, gravitational acceleration = 9.8 m/s^2, round answer to nearest tenth)"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/oneImage"
+            android:layout_width="match_parent"
+            android:layout_height="237dp"
+            app:srcCompat="@drawable/kinematics1" />
+
+        <EditText
+            android:id="@+id/firstAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Answer (to nearest tenth)"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/submitButOne"
+            android:layout_width="118dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="Submit" />
+
+        <TextView
+            android:id="@+id/rightOrWrong"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+</RelativeLayout>

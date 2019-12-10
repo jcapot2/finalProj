@@ -3,13 +3,19 @@
     package="om.example.finalproj">
 
     <application
+        android:name=".GlobalClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".grapherActivity"></activity>
+        <activity android:name=".learnActivity"></activity>
+        <activity android:name=".QuizActivity3" />
+        <activity android:name=".quizActivity2" />
+        <activity android:name=".quizMenuActivity" />
+        <activity android:name=".quizActivity" />
+        <activity android:name=".grapherActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

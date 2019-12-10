@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quizMenuActivity">
+
+    <Button
+        android:id="@+id/quizMenuBackBut"
+        android:layout_width="112dp"
+        android:layout_height="59dp"
+        android:text="Back"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/qOneBut"
+        android:layout_width="397dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="69dp"
+        android:gravity="center"
+        android:text="Question One" />
+
+    <Button
+        android:id="@+id/qTwoBut"
+        android:layout_width="397dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="208dp"
+        android:text="Question Two" />
+
+    <Button
+        android:id="@+id/qThreeBut"
+        android:layout_width="397dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="348dp"
+        android:text="Question Three"
+        android:layout_alignTop="@id/qThreeBut"/>
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="472dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Your Score:"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/scoreNum"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="528dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="0 / 3"
+        android:textSize="50dp" />
+
+</RelativeLayout>

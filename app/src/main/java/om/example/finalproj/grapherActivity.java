@@ -120,8 +120,8 @@ public class grapherActivity extends AppCompatActivity {
             tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             //lots of spacing to make the numbers line up and look neater
             output = "Maximum Height:      " + df.format(ymaxExact) + " (m)\n" +
-                     "Maximum Distance:  " + df.format(xmaxExact) + " (m)\n" +
-                     "Flight Time:                 " + df.format(timeFlight) + " (s)\n";
+                    "Maximum Distance:  " + df.format(xmaxExact) + " (m)\n" +
+                    "Flight Time:                 " + df.format(timeFlight) + " (s)\n";
             tv.setText(output);
             tv.setTextColor(Color.parseColor(throwColor));
             tv.setTextSize(tSize);
