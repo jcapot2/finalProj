@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Initial X Velocity"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/velY"
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Initial Y Velocity"
-                    android:inputType="number" />
+                    android:inputType="number|numberDecimal" />
 
                 <EditText
                     android:id="@+id/gravity"
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Input Gravity"
-                    android:inputType="number" />
+                    android:inputType="number|numberDecimal" />
 
             </LinearLayout>
         </LinearLayout>

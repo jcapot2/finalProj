@@ -58,9 +58,9 @@ public class grapherActivity extends AppCompatActivity {
         EditText x = findViewById(R.id.velX);
         EditText y = findViewById(R.id.velY);
         EditText g = findViewById(R.id.gravity);
-        x.setText("1");
-        y.setText("1");
-        g.setText("10");
+        x.setText("1.0");
+        y.setText("1.0");
+        g.setText("10.0");
         //set listeners for buttons
         run.setOnClickListener(unused -> throwClicked());
         clear.setOnClickListener(unused -> clearClicked());
@@ -82,59 +82,72 @@ public class grapherActivity extends AppCompatActivity {
         gravString = g_input.getText().toString();
         String output;
         //Run calculations if all input data exists
-        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gravString.equals("")) && !(gravString.equals("0"))) {
-            int vxInt, vyInt, g;
+        if (!(vxString.equals("")) && !(vyString.equals("")) && !(gravString.equals(""))) {
+            double vyInt, vxInt, g;
             double ymaxExact, xmaxExact, timeFlight;
-            vxInt = Integer.valueOf(vxString);
-            vyInt = Integer.valueOf(vyString);
-            g = Integer.valueOf(gravString);
-            double x, y, t, dt;
-            x = 0.0;
-            y = 0.0;
-            t = 0.0;
-            dt = .01;
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
-            while (y >= 0) {
-                y = vyInt * t - .5 * g * t * t;
-                x = vxInt * t;
-                t += dt;
-                //push y and x bounds for scaling
-                if (y > yMax) {
-                    yMax = y;
+            vxInt = Double.valueOf(vxString);
+            vyInt = Double.valueOf(vyString);
+            g = Double.valueOf(gravString);
+            if (g * g != 0) {
+                double x, y, t, dt;
+                int count = 0;
+                x = 0.0;
+                y = 0.0;
+                t = 0.0;
+                dt = .01;
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+                while (y >= 0) {
+                    y = vyInt * t - .5 * g * t * t;
+                    x = vxInt * t;
+                    t += dt;
+                    //push y and x bounds for scaling
+                    if (y > yMax) {
+                        yMax = y;
+                    }
+                    if (x > xMax) {
+                        xMax = x;
+                    }
+                    DataPoint point = new DataPoint(x, y);
+                    series.appendData(point, true, 15000);
+                    if (count > 7000) {
+                        TextView tv = new TextView(this);
+                        tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                        tv.setText("Reached Point Limit!\n");
+                        tv.setTextColor(Color.parseColor(errorColor));
+                        tv.setTextSize(tSize);
+                        layout.addView(tv, 0);
+                        break;
+                    }
+                    count++;
                 }
-                if (x > xMax) {
-                    xMax = x;
-                }
-                DataPoint point = new DataPoint(x, y);
-                series.appendData(point, true, 20100);
+                //scale the graph and add data
+                graph.getViewport().setMaxX(xMax + .001);
+                graph.getViewport().setMaxY(yMax + .001);
+                graph.addSeries(series);
+                //Populate terminalView
+                ymaxExact = (vyInt*vyInt)/(2*g);
+                xmaxExact = (2*vyInt*vxInt)/g;
+                timeFlight = (2*vyInt)/g;
+                TextView tv = new TextView(this);
+                tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                //lots of spacing to make the numbers line up and look neater
+                output = "Maximum Height:      " + df.format(ymaxExact) + " (m)\n" +
+                        "Maximum Distance:  " + df.format(xmaxExact) + " (m)\n" +
+                        "Flight Time:                 " + df.format(timeFlight) + " (s)\n";
+                tv.setText(output);
+                tv.setTextColor(Color.parseColor(throwColor));
+                tv.setTextSize(tSize);
+                layout.addView(tv, 0);
+                return;
             }
-            //scale the graph and add data
-            graph.getViewport().setMaxX(xMax + 1);
-            graph.getViewport().setMaxY(yMax + 1);
-            graph.addSeries(series);
-            //Populate terminalView
-            ymaxExact = (Double.valueOf(vyInt*vyInt))/(2*g);
-            xmaxExact = Double.valueOf(2*vyInt*vxInt)/g;
-            timeFlight = Double.valueOf(2*vyInt)/g;
-            TextView tv = new TextView(this);
-            tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            //lots of spacing to make the numbers line up and look neater
-            output = "Maximum Height:      " + df.format(ymaxExact) + " (m)\n" +
-                    "Maximum Distance:  " + df.format(xmaxExact) + " (m)\n" +
-                    "Flight Time:                 " + df.format(timeFlight) + " (s)\n";
-            tv.setText(output);
-            tv.setTextColor(Color.parseColor(throwColor));
-            tv.setTextSize(tSize);
-            layout.addView(tv, 0);
-        } else {
-            //Populate terminalView
-            TextView tv = new TextView(this);
-            tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            tv.setText("Invalid Input\n");
-            tv.setTextColor(Color.parseColor(errorColor));
-            tv.setTextSize(tSize);
-            layout.addView(tv, 0);
         }
+        //Populate terminalView with error
+        TextView tv = new TextView(this);
+        tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        tv.setText("Invalid Input\n");
+        tv.setTextColor(Color.parseColor(errorColor));
+        tv.setTextSize(tSize);
+        layout.addView(tv, 0);
     }
 
     /**
